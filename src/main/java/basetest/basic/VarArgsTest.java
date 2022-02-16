@@ -10,7 +10,7 @@ package basetest.basic;
  * - Var args must be last argument in method
  * - The caller can pass 0 (no argument) to infinite argument to call the method
  * - The Var args can be treat as arrays, means length can be obtained, an array can be passed or null can be passed e.g. for m1(int...i) a call can be made m1(null)
- * - In case of overloading, the Var-args are resolved at last
+ * - In case of overloading, the Var-args are resolved at last (1. exact match, 2. Widening of data type, 3. Autoboxing 4. VarArgs)
  * - Can't declare same method with Var-Args and array e.g. void m1(int[] i) and void m1(int...i)
  * 
  * @author sandeep.kumar

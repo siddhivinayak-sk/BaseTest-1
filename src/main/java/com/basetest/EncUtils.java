@@ -4,8 +4,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import java.util.Base64;
 
 
 public class EncUtils{
@@ -25,7 +24,7 @@ public class EncUtils{
 			byte[] arrayOfByte2 = ecipher.doFinal(arrayOfByte1);
 
 
-			return new BASE64Encoder().encode(arrayOfByte2);
+			return Base64.getEncoder().encodeToString(arrayOfByte2);
 		} catch (IllegalStateException localIllegalStateException) {
 			init();
 		}
@@ -34,7 +33,7 @@ public class EncUtils{
 
 	public static synchronized String decrypt(String paramString) throws Exception{
 		try {
-			byte[] arrayOfByte1 = new BASE64Decoder().decodeBuffer(paramString);
+			byte[] arrayOfByte1 = Base64.getDecoder().decode(paramString);
 
 			byte[] arrayOfByte2 = dcipher.doFinal(arrayOfByte1);
 

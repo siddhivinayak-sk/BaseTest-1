@@ -49,10 +49,10 @@ public class JasperTest {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("tid", "T100001");
-		String sourceJasperXml = "C:\\Users\\kumar-sand\\OneDrive - HCL Technologies Ltd\\Code\\NB\\jrprj01\\reports\\r2.jrxml";
-		String sourceJasper = "C:\\Users\\kumar-sand\\OneDrive - HCL Technologies Ltd\\Code\\NB\\jrprj01\\reports\\r2.jasper";
-		String outputFile = "C:\\Users\\kumar-sand\\OneDrive - HCL Technologies Ltd\\Code\\NB\\jrprj01\\r2.pdf";
-		String outputXlsxFile = "C:\\Users\\kumar-sand\\OneDrive - HCL Technologies Ltd\\Code\\NB\\jrprj01\\reports\\r2.xlsx";
+		String sourceJasperXml = "C:\\r2.jrxml";
+		String sourceJasper = "C:\\r2.jasper";
+		String outputFile = "C:\\r2.pdf";
+		String outputXlsxFile = "C:\\r2.xlsx";
 
 
 		JasperCompileManager.compileReportToFile(sourceJasperXml, sourceJasper);
