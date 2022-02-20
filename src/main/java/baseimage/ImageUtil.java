@@ -20,7 +20,7 @@ import javax.imageio.metadata.IIOInvalidTreeException;
 import javax.imageio.metadata.IIOMetadata;
 import javax.imageio.stream.ImageOutputStream;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.github.jaiimageio.plugins.tiff.BaselineTIFFTagSet;
 import com.github.jaiimageio.plugins.tiff.TIFFDirectory;
@@ -133,7 +133,7 @@ public final class ImageUtil {
 		} catch (IOException e) {
 			// Intentionally kept blank
 		}
-		return StringUtils.EMPTY;
+		return "";
 	}
 
 	private static IIOMetadata createMetadata(ImageWriter writer, ImageWriteParam writerParams, int resolution)

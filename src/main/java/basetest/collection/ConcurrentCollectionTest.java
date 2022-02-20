@@ -5,68 +5,41 @@
  */
 package basetest.collection;
 
-import java.lang.Iterable; //Iterface which made collections iterable and allow enhance for loop
-import java.util.Collection; //Parent interface of all collection Interfaces and Classes
-
-import java.util.List; //Provide linear and dynamic array feature
-import java.util.ArrayList; //Implementation of List Interface
-
-import java.util.Set; //Provide dynamic list of unique elements
-import java.util.HashSet; //Hashing based implementation of Set
-import java.util.LinkedHashSet; //Extended from HashSet and provide insertion order unique collection
-
-import java.util.SortedSet; //Interface to provided sorted collection based upon implementation of Comparable and Comparator interfaces
-import java.util.TreeSet; //Implemenation of SortedSet and NavigableSet
-
-import java.util.Queue; //Iterface to provde queue data structure
-import java.util.Random;
-import java.util.Deque; //Extends Queue and provide duble ended queue data structure where element can be added/removed from both end
-import java.util.LinkedList; //Implemenation of List and Deque based on element linking technique behaves like List, Queue, Dequeue and Stack
 import java.util.ArrayDeque; //Resizable array based implementation of Dequeue behaves like Queue, Dequeue, and Stack. Faster than LinkedList
-import java.util.PriorityQueue; //Unbounded Queue based on priority heap. Does not permit null as element, object must be type of Comparable, in natural order as Comparable implemented
-
-import java.util.Map;
-import java.util.HashMap; //It is a hashing based Map implementation which stores the Key and Value pair and provide functionality to deal with Key and Value
-import java.util.LinkedHashMap; //This class extends HashMap and provide linked list based Map implementation. It provides all feature like HashMap with insertion order
-import java.util.SortedMap; //This interface extends Map interface and provide methods for backed Map and other sorted methods
-import java.util.TreeMap; //It is implementation of NavigableMap, and SortedMap interface which provide sorted map based upon Comparable and Comparator interface
-
-import java.util.Vector; //Legacy dynamic list like ArrayList with properties like: legacy, methods are synchronized, provide enumration based iteration
-import java.util.Dictionary;
-import java.util.Hashtable; //Legacy hashing based class to Provide key, value storage like Map, with properties like: legacy class, methods are sysnchronized, store no null value in key or value, provide enumration based iteration
-import java.util.Stack;
-
-import java.util.Iterator; //It proves a way for iterating over collections, also provde remove method for removing the element
-import java.util.ListIterator; //Extends Iterator and provide reverse iteration over collections
-
-import java.util.Collections; //Provide Utils for Collection
+import java.util.ArrayList; //Implementation of List Interface
 import java.util.Arrays; //Provide Utils for Arrays
-import java.util.Enumeration;
-import java.util.NavigableMap; 
-import java.util.NavigableSet; //Backed Collection - Means if any changes made on this, changes reflect in original collection from which it made
-
-import java.util.concurrent.CopyOnWriteArrayList; //Concurrent List created by using array, whenever any modification made, a new copy of array is created in locked environment
-import java.util.concurrent.CopyOnWriteArraySet; //Concurrent Set created by using CopyOnWriteArrayList, it is same as CopyOnWriteArrayList except can contains only unique elements 
-
-import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.HashMap; //It is a hashing based Map implementation which stores the Key and Value pair and provide functionality to deal with Key and Value
+import java.util.HashSet; //Hashing based implementation of Set
+import java.util.Hashtable; //Legacy hashing based class to Provide key, value storage like Map, with properties like: legacy class, methods are sysnchronized, store no null value in key or value, provide enumration based iteration
+import java.util.Iterator;
+import java.util.LinkedHashMap; //This class extends HashMap and provide linked list based Map implementation. It provides all feature like HashMap with insertion order
+import java.util.LinkedHashSet; //Extended from HashSet and provide insertion order unique collection
+import java.util.LinkedList; //Implemenation of List and Deque based on element linking technique behaves like List, Queue, Dequeue and Stack
+import java.util.List; //Provide linear and dynamic array feature
+import java.util.Optional;
+import java.util.PriorityQueue; //Unbounded Queue based on priority heap. Does not permit null as element, object must be type of Comparable, in natural order as Comparable implemented
+import java.util.Spliterator;
+import java.util.TreeMap; //It is implementation of NavigableMap, and SortedMap interface which provide sorted map based upon Comparable and Comparator interface
+import java.util.TreeSet; //Implemenation of SortedSet and NavigableSet
+import java.util.Vector; //Legacy dynamic list like ArrayList with properties like: legacy, methods are synchronized, provide enumration based iteration
+import java.util.concurrent.ArrayBlockingQueue; //Blocking Queue backed by Array
 import java.util.concurrent.ConcurrentHashMap; //It provide hashing based map with fully concurrency
+import java.util.concurrent.ConcurrentLinkedDeque; //Linked node based unbounded Dequeue
+import java.util.concurrent.ConcurrentLinkedQueue; //Linked node based unbounded Queue
 import java.util.concurrent.ConcurrentSkipListMap; //Concurrent NavigableMap implementation based upon skip list where marker is used to delete element concurrently
 import java.util.concurrent.ConcurrentSkipListSet; //Concurrent NavigableSet implementation
-import java.util.concurrent.ConcurrentLinkedQueue; //Linked node based unbounded Queue
-import java.util.concurrent.ConcurrentLinkedDeque; //Linked node based unbounded Dequeue
-
-import java.util.concurrent.ArrayBlockingQueue; //Blocking Queue backed by Array
-import java.util.concurrent.LinkedBlockingQueue; //Linked Node based optionally bounded blocking Queue
-import java.util.concurrent.LinkedBlockingDeque; //Linked Node based optionally bounded blocking Dequeue
-import java.util.concurrent.PriorityBlockingQueue; //Unbounded Queue used same priority as ProrityQueue
-
-import java.util.concurrent.Delayed; //DelayQueue must implement DelayedQueue interface which extends Comparable<Delayed> interface
+import java.util.concurrent.CopyOnWriteArrayList; //Concurrent List created by using array, whenever any modification made, a new copy of array is created in locked environment
+import java.util.concurrent.CopyOnWriteArraySet; //Concurrent Set created by using CopyOnWriteArrayList, it is same as CopyOnWriteArrayList except can contains only unique elements 
 import java.util.concurrent.DelayQueue; //Unbounded blocking Queue of delayed element
-import java.util.concurrent.SynchronousQueue; //Blocking Queue which takes a single element and wait for removing this element
+import java.util.concurrent.Delayed; //DelayQueue must implement DelayedQueue interface which extends Comparable<Delayed> interface
+import java.util.concurrent.LinkedBlockingDeque; //Linked Node based optionally bounded blocking Dequeue
+import java.util.concurrent.LinkedBlockingQueue; //Linked Node based optionally bounded blocking Queue
 import java.util.concurrent.LinkedTransferQueue; //Linked node based TransferQueue
-
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.PriorityBlockingQueue; //Unbounded Queue used same priority as ProrityQueue
+import java.util.concurrent.SynchronousQueue; //Blocking Queue which takes a single element and wait for removing this element
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -74,10 +47,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ConcurrentCollectionTest {
 
-    /**
-     *
-     */
-    public void go() {
+    public void go() throws Exception {
         /**
          * Collection methods
          * size()
@@ -1287,8 +1257,8 @@ public class ConcurrentCollectionTest {
         		}
         	}
         };
-        new Thread(producer).start();
-        new Thread(consumer).start();
+        //new Thread(producer).start();
+        //new Thread(consumer).start();
         
         
         
@@ -1386,13 +1356,41 @@ public class ConcurrentCollectionTest {
         */
         
         
+        /**
+         * Spliterator is a interface traversal similar to Iterator but it has few difference:
+         * - Iterator provides hasNext() and next() to check and iterator elements one-by-one but
+         * Spliterator provides tryAdvance() which iterators, retrieve element and executed Consumer 
+         * method one-by-one of the collection, if element available then return true else false.
+         * 
+         * - It has method trySplit(), which splits the iterator with even size and create another
+         * Spliterator instance.
+         * 
+         * - It provide forEachRemaining() method which runs the passed Consumer function for each item
+         * remaining into the list after tryAdvance() method in current thread.
+         */
+        /*
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        Spliterator<Integer> si = numbers.spliterator();
+        Spliterator<Integer> ssi = si.trySplit();
+        new Thread(() -> {
+        	while(si.tryAdvance(System.out::println));
+        }).start();
+        new Thread(() -> {
+        	while(ssi.tryAdvance(System.out::println));
+        }).start();
+        si.forEachRemaining(System.out::println);
+        ssi.forEachRemaining(System.out::println);
+        */
+        
+        
+        
     }
 
     /**
      *
      * @param args
      */
-    public static void main(String...args) {
+    public static void main(String...args) throws Exception {
         ConcurrentCollectionTest test = new ConcurrentCollectionTest();
         test.go();
     }

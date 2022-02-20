@@ -1,15 +1,20 @@
 package basetest.stream;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.IntSummaryStatistics;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Spliterator;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -114,7 +119,7 @@ public class GroupByTest {
 		/**
 		 * Modify resultant map while group by
 		 */
-		EnumMap<BlogPostType, List<BlogPost>> postsByType = data.stream().collect(Collectors.groupingBy(BlogPost::getType, () -> new EnumMap(BlogPostType.class), Collectors.toList()));
+		EnumMap<BlogPostType, List<BlogPost>> postsByType = data.stream().collect(Collectors.groupingBy(BlogPost::getType, () -> new EnumMap<BlogPostType, List<BlogPost>>(BlogPostType.class), Collectors.toList()));
 		
 		
 		/**
@@ -164,11 +169,47 @@ public class GroupByTest {
 		
 		
 		
-		
-		
-		
-		
-		
+        /**
+         * Stream has rich set of methods
+         */
+        List<Integer> numbersx = Arrays.asList(1, 2, 3, 4, 5, 5, 1);
+        boolean allMatch = numbersx.parallelStream().allMatch((t) -> t > 0); //Return true if given test passed in Predicate returns true for all elements
+        boolean anyMatch = numbersx.parallelStream().anyMatch((t) -> t == 5); //Return true if given test passed in Predicate returns true for any elements
+        long count1 = numbersx.parallelStream().collect(Collectors.counting()); //Simply perform collection on stream
+        long count2 = numbersx.parallelStream().count(); //Count the elements available in stream
+        long count3 = numbersx.parallelStream().distinct().count(); //distinct the element based upon equals implementation
+        long count4 = numbersx.parallelStream().filter(t -> t > 3).count(); //Filters the elements as per passed Predicate object
+        Optional<Integer> findAny = numbersx.parallelStream().findAny(); //Returns any element from list as Optional
+        Optional<Integer> findFirst = numbersx.parallelStream().findFirst(); //Returns first element from the list as Optional
+        numbersx.parallelStream().forEach(System.out::println); //Iterate elements sequentially and execute Consumer 
+        List<List<Integer>> numbers2 = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5, 5, 1));
+        List<String> numbers3 = numbers2.parallelStream().flatMap(t -> t.stream().map(String::valueOf)).collect(Collectors.toList()); //It flat the input stream and map
+        Integer numbers4 = numbers2.parallelStream().flatMapToInt(t -> IntStream.of(t.get(0))).sum(); //Flat map to IntStream
+        numbersx.parallelStream().forEachOrdered(System.out::println); //This performs the Consumer in order if specified collection is ordered
+        boolean isParallel = numbersx.parallelStream().isParallel(); //Discovers steam is parallel or not
+        Iterator<Integer> itr = numbersx.parallelStream().iterator(); //Returns Iterator object of steam
+        Spliterator<Integer> sitr = numbersx.parallelStream().spliterator(); //Returns Spliterator object of steam
+        long count5 = numbersx.parallelStream().limit(5).count(); //Returns a stream which is not longer than passed limit
+        List<String> numbers5 = numbersx.parallelStream().map(String::valueOf).collect(Collectors.toList()); //Map the element
+        Optional<Integer> max = numbersx.parallelStream().max(Integer::compare); //Retrun the biggest element as per passed comparator
+        Optional<Integer> min = numbersx.parallelStream().min(Integer::compare); //Retrun the smallest element as per passed comparator
+        boolean nonMatch = numbersx.parallelStream().noneMatch(t -> t > 10); //Return true if no element matched to the passed Predicate
+        numbersx.parallelStream().onClose(() -> {System.out.println("Stream is being closed");}).close(); //Map handler with stream
+        numbersx.parallelStream().parallel(); //Return parallel stream, if already parallel then same object returned
+        numbersx.parallelStream().filter(t -> t > 0).peek(t -> System.out.println("Filter on:" + t)).map(String::valueOf).peek(t -> System.out.println("Map on:" + t)).collect(Collectors.toList()); //It returns a stream and execute Consumer whenever element consume in piped operation 
+        numbersx.parallelStream().sequential(); //Return sequential stream, if return same object if stream sequential
+        numbersx.parallelStream().sorted(); //Return a sorted stream based on Comparable implementation
+        numbersx.parallelStream().sorted(Integer::compare); //Return a sorted stream based on Comparator passed
+        long count6 = numbersx.parallelStream().skip(5).count(); //It skip first N elements and return stream. If N > size then return EMPTY stream
+        numbersx.parallelStream().unordered(); //Returns eqivalant unordered stream. If already unordered returns same object
+        List<String> numbers6 = numbersx.parallelStream().collect(ArrayList::new, (r, t) -> {  //It takes three inputs: Supplier, Accumulator and Combiner
+        	r.add(String.valueOf(t));
+        }, ArrayList::addAll);
+        Optional<Integer> intOpt = numbersx.parallelStream().reduce((r, t) -> r + t); // Performs BinaryOperation with the elements and will return single final result
+        Integer int1 = numbersx.parallelStream().reduce(50, BinaryOperator.maxBy(Integer::compare)); // Perform reduction with additional element with BinaryOperation and provide single result
+        List<String> numbers7 = numbersx.parallelStream().takeWhile(t -> t < 3).map(String::valueOf).collect(Collectors.toList()); // It is similar to filter(), difference is, it aborts stream as predict return false
+        
+        
 		System.out.println(thumbs);
 		
 		
