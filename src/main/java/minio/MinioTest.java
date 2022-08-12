@@ -31,10 +31,10 @@ import io.minio.messages.Item;
 
 public class MinioTest {
 	
-	private static String minioURL = "http://localhost";
+	private static String minioURL = "";
 	private static int port = 9000;
-	private static String accessKey = "5tCZJWKlNgvIbXhs";
-	private static String secretKey = "UnG0cwuPWwip2LkeyKuABweoq6UDLsKW";
+	private static String accessKey = "";
+	private static String secretKey = "";
 	
 	public static void main(String...args) {
 		System.out.println(SasUrl("my-bucket2", "2022/06/29/testfile.txt"));
