@@ -186,3 +186,4 @@ public class MinioTest {
 	}
 }
 //Documentation: https://docs.min.io/docs/java-client-quickstart-guide.html
+//https://github.com/minio/minio-java/tree/release/examples

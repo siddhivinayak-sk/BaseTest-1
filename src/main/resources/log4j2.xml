@@ -16,11 +16,12 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="root" level="all" additivity="false">
-            <appender-ref ref="RollingFile" level="all"/>
-        </Logger>
-    <Root level="all" additivity="false">
-        <AppenderRef ref="RollingFile"/>
-    </Root>
+<!--         <Logger name="root" level="all" additivity="false"> -->
+<!--             <appender-ref ref="RollingFile" level="all"/> -->
+<!--         </Logger> -->
+        
+	    <Root level="all" additivity="false">
+	        <AppenderRef ref="RollingFile"/>
+	    </Root>
     </Loggers>
 </Configuration>
