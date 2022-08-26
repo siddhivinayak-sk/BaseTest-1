@@ -137,4 +137,6 @@ public class S3MinIOTest {
 			.credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create("admin", "admin")))
             .build();
 	
+	
+	
 }
