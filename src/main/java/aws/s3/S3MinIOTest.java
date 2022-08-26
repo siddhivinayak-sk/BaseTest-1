@@ -13,7 +13,10 @@ import java.util.stream.Collectors;
 import reactor.core.publisher.Mono;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.async.AsyncRequestBody;
+import software.amazon.awssdk.core.async.AsyncResponseTransformer;
+import software.amazon.awssdk.core.async.ResponsePublisher;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.model.CopyObjectRequest;
@@ -29,7 +32,7 @@ public class S3MinIOTest {
 	
 	public static void main(String...args) {
 		S3MinIOTest test = new S3MinIOTest();
-		test.copyFile();
+		test.getFile();
 	}
 
 	
@@ -50,9 +53,30 @@ public class S3MinIOTest {
 	}
 	
 	void getFile() {
-		CompletableFuture<GetObjectResponse> cf = s3.getObject(GetObjectRequest.builder().bucket("mybucket").key("credentials-1.json").build(), Paths.get("testfile.txt"));
+		GetObjectRequest request = GetObjectRequest
+										.builder()
+										.bucket("minio-bucket")
+										.key("/1658826064308")
+										.build();
+		
+		CompletableFuture<GetObjectResponse> cf = s3.getObject(request, Paths.get("/myfile1.txt"));
+		
 		try {
 			System.out.println(cf.get().tagCount());
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+
+		CompletableFuture<ResponseBytes<GetObjectResponse>> rpToBytes = s3.getObject(request, AsyncResponseTransformer.toBytes());
+		CompletableFuture<ResponsePublisher<GetObjectResponse>> rpToPublisher = s3.getObject(request, AsyncResponseTransformer.toPublisher());
+		try {
+			rpToPublisher.get().subscribe(buffer -> {
+				byte[] data = new byte[buffer.limit()];
+				buffer.get(data);
+				
+				
+				
+			});
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
@@ -61,10 +85,10 @@ public class S3MinIOTest {
 	void copyFile() {
 		CompletableFuture<CopyObjectResponse> cf = s3.copyObject(CopyObjectRequest
 				.builder()
-				.destinationBucket("mybucket")
-				.destinationKey("credentials-4.json")
-				.sourceKey("credentials-1.json")
-				.sourceBucket("mybucket")
+				.destinationBucket("minio-bucket")
+				.destinationKey("/myfile1.txt")
+				.sourceKey("/62df8ed5dd5a4c38cffdf461")
+				.sourceBucket("minio-bucket")
 				.build());
 		try {
 			System.out.println(cf.get());
@@ -108,9 +132,9 @@ public class S3MinIOTest {
 	
 	S3AsyncClient s3 = S3AsyncClient
 			.builder()
-			.endpointOverride(URI.create("http://localhost:9000"))
+			.endpointOverride(URI.create("http://localhost:8080"))
 			.region(Region.AP_EAST_1)
-			.credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create("privatekey", "secretkey")))
+			.credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create("admin", "admin")))
             .build();
 	
 }
