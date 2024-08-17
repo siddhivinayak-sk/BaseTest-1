@@ -31,9 +31,9 @@ import io.minio.messages.Item;
 
 public class MinioTest {
 	
-	private static String minioURL = "";
-	private static int port = 9000;
-	private static String accessKey = "";
+	private static String minioURL = "https://minio-api.dev22r1.sbcp.io";
+	private static int port = 443;
+	private static String accessKey = "core-4-usecaseE";
 	private static String secretKey = "";
 	
 	public static void main(String...args) {
@@ -41,11 +41,11 @@ public class MinioTest {
 		
 		upload(new File("C:\\sandeep\\sandbox\\minio\\testfile.txt"), "my-bucket2", "2022/06/29/testfile.txt");
 		
-		download(new File("C:\\sandeep\\sandbox\\minio\\testfile-d.txt"), "my-bucket2", "2022/06/29/testfile.txt");
+		//download(new File("C:\\sandeep\\sandbox\\minio\\testfile-d.txt"), "my-bucket2", "2022/06/29/testfile.txt");
 		
 		//remove("my-bucket2", "2022/06/29/testfile.txt");
 		
-		list("my-bucket2", "2022/06/29/").stream().forEach(System.out::println);
+		//list("my-bucket2", "2022/06/29/").stream().forEach(System.out::println);
 		
 		
 	}

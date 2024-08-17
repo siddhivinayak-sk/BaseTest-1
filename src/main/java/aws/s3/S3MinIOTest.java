@@ -45,6 +45,7 @@ public class S3MinIOTest {
 				.build();
 		CompletableFuture<PutObjectResponse> cf =  s3.putObject(request,
 				AsyncRequestBody.fromFile(new File("1.jpg")));
+		
 		try {
 			System.out.println(cf.get().eTag());
 		} catch (InterruptedException | ExecutionException e) {
