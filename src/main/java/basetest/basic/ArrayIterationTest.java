@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package basictest;
+package basetest.basic;
 
 /**
  *
  * @author Sandeep
  */
-public class BasucTest1 {
+public class ArrayIterationTest {
     public static void main1(String...args) {
         Integer[] arr = {
             1, 3, 5, 7, 9, 11, 13, 15,    

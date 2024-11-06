@@ -1,4 +1,4 @@
-package azure;
+package cloud.azure;
 
 import java.net.MalformedURLException;
 import java.security.KeyPair;

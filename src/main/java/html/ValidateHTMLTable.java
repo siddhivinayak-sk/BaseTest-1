@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package htmltabletest;
+package html;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -13,24 +13,23 @@ import java.io.File;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 /**
  *
  * @author Sandeep
  */
-public class HTMLTable {
+public class ValidateHTMLTable {
     String fileData;
     String fileName;
     String filePath;
     String logBuffer = "";
     boolean dirty;
     
-    HTMLTable(String filePath) {
+    ValidateHTMLTable(String filePath) {
         this.filePath = filePath;
         fileName = new File(filePath).getName();
-        fileData = HTMLTable.readFile(filePath);
+        fileData = ValidateHTMLTable.readFile(filePath);
         check(traverse(fileData));
     }
     
@@ -350,7 +349,7 @@ public class HTMLTable {
     }
     
     public static void main(String...args) {
-        HTMLTable table = new HTMLTable("e:\\important\\office_work\\dbhteb-87\\epub\\HEBK013-C04_p43-57.html");
+        ValidateHTMLTable table = new ValidateHTMLTable("e:\\important\\office_work\\dbhteb-87\\epub\\HEBK013-C04_p43-57.html");
         if(table.isDirty()) {
             writeFile(table.getReport(), "e:\\important\\office_work\\dbhteb-87\\epub\\table.log");
         }

@@ -44,7 +44,7 @@
  */
 
 
-package pdfstriper;
+package pdfboxtest.pdfstriper;
 
 import java.io.IOException;
 import java.util.ArrayList;
