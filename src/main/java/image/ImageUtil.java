@@ -1,4 +1,4 @@
-package baseimage;
+package image;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

@@ -1,4 +1,4 @@
-package aws.s3;
+package cloud.aws.s3;
 
 /**
  * Commented as need to enable dependency in pom.xml

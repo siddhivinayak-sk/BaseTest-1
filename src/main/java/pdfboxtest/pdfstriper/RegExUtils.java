@@ -1,4 +1,4 @@
-package pdfstriper;
+package pdfboxtest.pdfstriper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
