@@ -181,7 +181,7 @@ public class GroupByTest {
         long count4 = numbersx.parallelStream().filter(t -> t > 3).count(); //Filters the elements as per passed Predicate object
         Optional<Integer> findAny = numbersx.parallelStream().findAny(); //Returns any element from list as Optional
         Optional<Integer> findFirst = numbersx.parallelStream().findFirst(); //Returns first element from the list as Optional
-        numbersx.parallelStream().forEach(System.out::println); //Iterate elements sequentially and execute Consumer 
+        numbersx.parallelStream().forEach(System.out::println); //Iterate elements sequentially and execute Consumer
         List<List<Integer>> numbers2 = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5, 5, 1));
         List<String> numbers3 = numbers2.parallelStream().flatMap(t -> t.stream().map(String::valueOf)).collect(Collectors.toList()); //It flat the input stream and map
         Integer numbers4 = numbers2.parallelStream().flatMapToInt(t -> IntStream.of(t.get(0))).sum(); //Flat map to IntStream
@@ -196,7 +196,7 @@ public class GroupByTest {
         boolean nonMatch = numbersx.parallelStream().noneMatch(t -> t > 10); //Return true if no element matched to the passed Predicate
         numbersx.parallelStream().onClose(() -> {System.out.println("Stream is being closed");}).close(); //Map handler with stream
         numbersx.parallelStream().parallel(); //Return parallel stream, if already parallel then same object returned
-        numbersx.parallelStream().filter(t -> t > 0).peek(t -> System.out.println("Filter on:" + t)).map(String::valueOf).peek(t -> System.out.println("Map on:" + t)).collect(Collectors.toList()); //It returns a stream and execute Consumer whenever element consume in piped operation 
+        numbersx.parallelStream().filter(t -> t > 0).peek(t -> System.out.println("Filter on:" + t)).map(String::valueOf).peek(t -> System.out.println("Map on:" + t)).collect(Collectors.toList()); //It returns a stream and execute Consumer whenever element consume in piped operation
         numbersx.parallelStream().sequential(); //Return sequential stream, if return same object if stream sequential
         numbersx.parallelStream().sorted(); //Return a sorted stream based on Comparable implementation
         numbersx.parallelStream().sorted(Integer::compare); //Return a sorted stream based on Comparator passed
@@ -208,8 +208,8 @@ public class GroupByTest {
         Optional<Integer> intOpt = numbersx.parallelStream().reduce((r, t) -> r + t); // Performs BinaryOperation with the elements and will return single final result
         Integer int1 = numbersx.parallelStream().reduce(50, BinaryOperator.maxBy(Integer::compare)); // Perform reduction with additional element with BinaryOperation and provide single result
         List<String> numbers7 = numbersx.parallelStream().takeWhile(t -> t < 3).map(String::valueOf).collect(Collectors.toList()); // It is similar to filter(), difference is, it aborts stream as predict return false
-        
-        
+
+
 		System.out.println(thumbs);
 		
 		

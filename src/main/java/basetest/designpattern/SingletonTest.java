@@ -6,9 +6,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
 
-import org.apache.poi.util.SystemOutLogger;
-import java.lang.Object;
-
 public class SingletonTest {
 
 	public static void main(String...args) throws Exception {
@@ -35,7 +32,7 @@ public class SingletonTest {
 				for(Method m:c1.getDeclaredMethods()) {
 					if(m.getName().equals("getSingleton")) {
 						m.setAccessible(true);
-						s5 = (Singleton)m.invoke(null, null);
+						s5 = (Singleton)m.invoke(null);
 					}
 				}
 				System.out.println(s5);
@@ -52,7 +49,7 @@ public class SingletonTest {
 				for(Method m:c2.getDeclaredMethods()) {
 					if(m.getName().equals("getSingleton")) {
 						m.setAccessible(true);
-						s6 = (Singleton)m.invoke(null, null);
+						s6 = (Singleton)m.invoke(null);
 					}
 				}
 				System.out.println(s6);
@@ -61,13 +58,13 @@ public class SingletonTest {
 		};
 		new Thread(r2).start();
 		
-		Method m1 = Class.forName("basetest.designpattern.Singleton").getMethod("getSingleton", null);
+		Method m1 = Class.forName("basetest.designpattern.Singleton").getMethod("getSingleton");
 		m1.setAccessible(true);
-		System.out.println(m1.invoke(null, null));
+		System.out.println(m1.invoke(null));
 		
-		Method m2 = Class.forName("basetest.designpattern.Singleton").getMethod("getSingleton", null);
+		Method m2 = Class.forName("basetest.designpattern.Singleton").getMethod("getSingleton");
 		m2.setAccessible(true);
-		System.out.println(m2.invoke(null, null));
+		System.out.println(m2.invoke(null));
 		
 	}
 }

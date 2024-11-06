@@ -25,7 +25,7 @@ public class AzureVaultUtils {
 
 	private static final Logger logger = Logger.getLogger(AzureVaultUtils.class.getName());
 
-	public static void main(String...args) throws CertificateException {
+	public static void main(String...args) throws Exception {
 		
 		/**
 		 * A Pojo class to pass all required parameter to obtain

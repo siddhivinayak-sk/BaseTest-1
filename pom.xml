@@ -7,9 +7,8 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <aws.java.sdk.version>2.17.210</aws.java.sdk.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 	
     <dependencies>
@@ -100,7 +99,7 @@
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
-		    <version>6.18.0</version>
+		    <version>7.0.1</version>
 		    <exclusions>
 		    	<exclusion>
 		    		<groupId>com.fasterxml.jackson.core</groupId>
@@ -166,7 +165,7 @@
 		<dependency>
 			<groupId>com.azure</groupId>
 			<artifactId>azure-identity</artifactId>
-			<version>1.1.0</version>
+			<version>1.14.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.fasterxml.jackson.datatype</groupId>
@@ -181,17 +180,17 @@
 		<dependency>
 			<groupId>com.azure</groupId>
 			<artifactId>azure-security-keyvault-secrets</artifactId>
-			<version>4.2.0</version>
+			<version>4.9.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>azure-keyvault</artifactId>
-			<version>1.2.4</version>
+			<version>1.2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>adal4j</artifactId>
-			<version>1.6.5</version>
+			<version>1.6.7</version>
 		</dependency>		
 		<dependency>
 		    <groupId>org.imgscalr</groupId>
@@ -246,8 +245,8 @@
 		    <groupId>software.amazon.awssdk</groupId>
 		    <artifactId>s3</artifactId>
 		</dependency>
-		
-		
+
+
 		<dependency>
 		    <groupId>io.projectreactor</groupId>
 		    <artifactId>reactor-core</artifactId>
@@ -287,15 +286,15 @@
 		    <artifactId>httpclient</artifactId>
 		    <version>4.5.13</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>jakarta.validation</groupId>
 		    <artifactId>jakarta.validation-api</artifactId>
 		    <version>2.0.2</version>
 		</dependency>
     </dependencies>
-	
-	
+
+
 	<dependencyManagement>
     	<dependencies>
     	<!--      Enable to use imparative API for S3 -->
@@ -306,8 +305,8 @@
 		        <version>1.11.79</version>
 		        <type>pom</type>
 		        <scope>import</scope>
-			</dependency>	
-			-->	
+			</dependency>
+			-->
 		<!-- Enable to use reactive API for S3 -->
 	      <dependency>
 	        <groupId>software.amazon.awssdk</groupId>
@@ -317,9 +316,9 @@
         	<scope>import</scope>
       	  </dependency>
     	</dependencies>
-	</dependencyManagement>	
-	
-	
+	</dependencyManagement>
+
+
 <build>
         <plugins>
             <plugin>
@@ -359,6 +358,6 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>	
+    </build>
 	
 </project>

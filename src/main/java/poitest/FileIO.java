@@ -20,6 +20,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
@@ -74,16 +75,16 @@ public class FileIO {
                         if( !columnNames.get(j).isEmpty() && cell == null) rowValues.add("");
                         else{                        
                             switch(cell.getCellType()) {                            
-                                case Cell.CELL_TYPE_BOOLEAN:
+                                case BOOLEAN:
                                     rowValues.add(cell.getBooleanCellValue() + "");
                                     break;
-                                case Cell.CELL_TYPE_NUMERIC:
+                                case NUMERIC:
                                     rowValues.add(cell.getNumericCellValue() + "");
                                     break;
-                                case Cell.CELL_TYPE_FORMULA:
-                                case Cell.CELL_TYPE_BLANK:
-                                case Cell.CELL_TYPE_ERROR:
-                                case Cell.CELL_TYPE_STRING:
+                                case FORMULA:
+                                case BLANK:
+                                case ERROR:
+                                case STRING:
                                     rowValues.add(cell.getStringCellValue() + "");
                                     break;                            
                             }

@@ -55,8 +55,7 @@ import java.lang.reflect.Method;
 @Retention(RUNTIME)
 @Inherited
 @Repeatable(MyAnnotationContainerForRepetableAnnotation.class)
-@Target({ TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE, TYPE_PARAMETER,
-		TYPE_USE })
+@Target({ TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE, TYPE_PARAMETER, TYPE_USE })
 @interface MyAnnotation {
 
 	String value();
@@ -80,6 +79,7 @@ import java.lang.reflect.Method;
 @Documented
 @Retention(RUNTIME)
 @Inherited
+@Target({ TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE, TYPE_PARAMETER, TYPE_USE })
 @interface MyAnnotationContainerForRepetableAnnotation {
 	MyAnnotation[] value();
 }
