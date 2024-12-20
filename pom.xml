@@ -295,7 +295,6 @@
 		</dependency>
     </dependencies>
 
-
 	<dependencyManagement>
     	<dependencies>
     	<!--      Enable to use imparative API for S3 -->
@@ -318,7 +317,6 @@
       	  </dependency>
     	</dependencies>
 	</dependencyManagement>
-
 
 	<build>
         <plugins>

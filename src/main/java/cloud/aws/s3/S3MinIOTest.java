@@ -19,14 +19,7 @@ import software.amazon.awssdk.core.async.AsyncResponseTransformer;
 import software.amazon.awssdk.core.async.ResponsePublisher;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
-import software.amazon.awssdk.services.s3.model.CopyObjectRequest;
-import software.amazon.awssdk.services.s3.model.CopyObjectResponse;
-import software.amazon.awssdk.services.s3.model.GetObjectRequest;
-import software.amazon.awssdk.services.s3.model.GetObjectResponse;
-import software.amazon.awssdk.services.s3.model.GetObjectTaggingRequest;
-import software.amazon.awssdk.services.s3.model.GetObjectTaggingResponse;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.services.s3.model.PutObjectResponse;
+import software.amazon.awssdk.services.s3.model.*;
 
 public class S3MinIOTest {
 	
@@ -48,6 +41,23 @@ public class S3MinIOTest {
 		
 		try {
 			System.out.println(cf.get().eTag());
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+	}
+
+	void listFiles() {
+		ListObjectsV2Request request = ListObjectsV2Request.builder()
+				.bucket("sbcp-sbcpdev-soc-siem-logs")
+				.build();
+
+		CompletableFuture<ListObjectsV2Response> future = s3.listObjectsV2(request);
+
+		try {
+			ListObjectsV2Response response = future.get();
+			for (S3Object object : response.contents()) {
+				System.out.println("File======>: - " + object.key() + " (size = " + object.size() + ")");
+			}
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
